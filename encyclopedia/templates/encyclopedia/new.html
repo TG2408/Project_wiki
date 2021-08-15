@@ -1,0 +1,23 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block body %}
+    
+    <form action="{% url 'new' %}" method="POST">
+        {% csrf_token %}
+        <div>TITLE -</div>
+        <input type="text" maxlength="64" name = "title_new">
+        
+        <div>
+            <label for="content_new">Content :</label>
+        </div>
+        <textarea id="content_new" name="content_new" style="max-height: 6cm; width: 33cm;"></textarea>
+        <input type="submit" value="Save encyclopedia">
+    </form>
+
+    <div>
+        {% for msg in messages %}
+        <h1>{{msg}}</h1>
+        {% endfor %}
+    </div>
+
+{% endblock %}
